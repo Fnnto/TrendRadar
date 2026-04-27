@@ -136,14 +136,14 @@ def format_title_for_platform(
         title_prefix = "🆕 " if title_data.get("is_new") else ""
 
         if show_source:
-            result = f"[{title_data['source_name']}] {title_prefix}{formatted_title}"
+            result = f"▸ [{title_data['source_name']}] {title_prefix}{formatted_title}"
         elif show_keyword and keyword:
-            result = f"<b>[{html_escape(keyword)}]</b> {title_prefix}{formatted_title}"
+            result = f"▸ <b>[{html_escape(keyword)}]</b> {title_prefix}{formatted_title}"
         else:
-            result = f"{title_prefix}{formatted_title}"
+            result = f"▸ {title_prefix}{formatted_title}"
 
         if rank_display:
-            result += f" {rank_display}"
+            result += f" <code>{rank_display}</code>"
         if title_data["time_display"]:
             result += f" <code>- {title_data['time_display']}</code>"
         if title_data["count"] > 1:

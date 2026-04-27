@@ -20,7 +20,7 @@ def get_batch_header(format_type: str, batch_num: int, total_batches: int) -> st
         格式化的批次头部字符串
     """
     if format_type == "telegram":
-        return f"<b>[第 {batch_num}/{total_batches} 批次]</b>\n\n"
+        return f"<b>{batch_num}/{total_batches}</b>\n\n"
     elif format_type == "slack":
         return f"*[第 {batch_num}/{total_batches} 批次]*\n\n"
     elif format_type in ("wework_text", "bark"):

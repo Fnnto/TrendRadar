@@ -330,27 +330,51 @@ def render_ai_analysis_telegram(result: AIAnalysisResult) -> str:
             return f"ℹ️ {_escape_html(result.error)}"
         return f"⚠️ AI 分析失败: {_escape_html(result.error)}"
 
-    lines = ["<b>✨ AI 热点分析</b>", ""]
+    lines = ["━━━━━━━━━━━━━━━━━━━━━━━━", "✨ <b>AI 热点分析</b>", ""]
 
     if result.core_trends:
-        lines.extend(["<b>核心热点态势</b>", _escape_html(_format_list_content(result.core_trends)), ""])
+        lines.extend([
+            "<blockquote><b>🔥 核心热点态势</b>",
+            _escape_html(_format_list_content(result.core_trends)),
+            "</blockquote>", ""
+        ])
 
     if result.sentiment_controversy:
-        lines.extend(["<b>舆论风向争议</b>", _escape_html(_format_list_content(result.sentiment_controversy)), ""])
+        lines.extend([
+            "<blockquote><b>💬 舆论风向争议</b>",
+            _escape_html(_format_list_content(result.sentiment_controversy)),
+            "</blockquote>", ""
+        ])
 
     if result.signals:
-        lines.extend(["<b>异动与弱信号</b>", _escape_html(_format_list_content(result.signals)), ""])
+        lines.extend([
+            "<blockquote><b>📡 异动与弱信号</b>",
+            _escape_html(_format_list_content(result.signals)),
+            "</blockquote>", ""
+        ])
 
     if result.rss_insights:
-        lines.extend(["<b>RSS 深度洞察</b>", _escape_html(_format_list_content(result.rss_insights)), ""])
+        lines.extend([
+            "<blockquote><b>📰 RSS 深度洞察</b>",
+            _escape_html(_format_list_content(result.rss_insights)),
+            "</blockquote>", ""
+        ])
 
     if result.outlook_strategy:
-        lines.extend(["<b>研判策略建议</b>", _escape_html(_format_list_content(result.outlook_strategy)), ""])
+        lines.extend([
+            "<blockquote><b>🎯 研判策略建议</b>",
+            _escape_html(_format_list_content(result.outlook_strategy)),
+            "</blockquote>", ""
+        ])
 
     if result.standalone_summaries:
         summaries_text = _format_standalone_summaries(result.standalone_summaries)
         if summaries_text:
-            lines.extend(["<b>独立源点速览</b>", _escape_html(summaries_text)])
+            lines.extend([
+                "<blockquote><b>📌 独立源点速览</b>",
+                _escape_html(summaries_text),
+                "</blockquote>"
+            ])
 
     return "\n".join(lines)
 
