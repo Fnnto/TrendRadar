@@ -135,16 +135,18 @@ def format_title_for_platform(
 
         title_prefix = "🆕 " if title_data.get("is_new") else ""
 
-        if show_source:
-            result = f"▸ [{title_data['source_name']}] {title_prefix}{formatted_title}"
-        elif show_keyword and keyword:
-            result = f"▸ <b>[{html_escape(keyword)}]</b> {title_prefix}{formatted_title}"
-        else:
-            result = f"▸ {title_prefix}{formatted_title}"
+        # 构建基础内容
+        result = f"▸ {title_prefix}{formatted_title}"
 
         # Telegram 只显示上升趋势箭头，不显示排名数字和时间
         if rank_display and "🔺" in rank_display:
             result += " 🔺"
+
+        # 来源放在最后
+        if show_source:
+            result += f"[{title_data['source_name']}]"
+        elif show_keyword and keyword:
+            result += f"<b>[{html_escape(keyword)}]</b>"
 
         return result
 
