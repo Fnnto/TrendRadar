@@ -294,7 +294,7 @@ def split_content_into_batches(
         if update_info:
             base_footer += f"\n> TrendRadar 发现新版本 **{update_info['remote_version']}**，当前 **{update_info['current_version']}**"
     elif format_type == "telegram":
-        base_footer = f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n🤖 Ryze · {now.strftime('%H:%M')}"
+        base_footer = f"\n\n━━━━━━━━━━━━━━━━━━━\n🤖 Ryze · {now.strftime('%H:%M')}"
         if update_info:
             base_footer += f"\nTrendRadar 发现新版本 {update_info['remote_version']}，当前 {update_info['current_version']}"
     elif format_type == "ntfy":
@@ -321,7 +321,7 @@ def split_content_into_batches(
         if format_type in ("wework", "bark"):
             stats_header = f"📊 **{stats_title}** (共 {total_hotlist_count} 条)\n\n"
         elif format_type == "telegram":
-            stats_header = f"━━━━━━━━━━━━━━━━━━━━━━━━\n📊 <b>热点新闻</b> <code>{total_hotlist_count}</code> 条\n\n"
+            stats_header = f"━━━━━━━━━━━━━━━━━━━\n📊 <b>热点新闻</b> <code>{total_hotlist_count}</code> 条\n\n"
         elif format_type == "ntfy":
             stats_header = f"📊 **{stats_title}** (共 {total_hotlist_count} 条)\n\n"
         elif format_type == "feishu":
@@ -610,7 +610,7 @@ def split_content_into_batches(
                 new_header = f"\n\n\n\n🆕 **本次新增热点新闻** (共 {report_data['total_new_count']} 条)\n\n"
             elif format_type == "telegram":
                 new_header = (
-                    f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n🆕 <b>新增热点</b> <code>{report_data['total_new_count']}</code> 条\n\n"
+                    f"\n\n━━━━━━━━━━━━━━━━━━━\n🆕 <b>新增热点</b> <code>{report_data['total_new_count']}</code> 条\n\n"
                 )
             elif format_type == "ntfy":
                 new_header = f"\n\n🆕 **本次新增热点新闻** (共 {report_data['total_new_count']} 条)\n\n"
@@ -625,7 +625,7 @@ def split_content_into_batches(
             if format_type in ("wework", "bark"):
                 new_header = f"🆕 **本次新增热点新闻** (共 {report_data['total_new_count']} 条)\n\n"
             elif format_type == "telegram":
-                new_header = f"━━━━━━━━━━━━━━━━━━━━━━━━\n🆕 <b>新增热点</b> <code>{report_data['total_new_count']}</code> 条\n\n"
+                new_header = f"━━━━━━━━━━━━━━━━━━━\n🆕 <b>新增热点</b> <code>{report_data['total_new_count']}</code> 条\n\n"
             elif format_type == "ntfy":
                 new_header = f"🆕 **本次新增热点新闻** (共 {report_data['total_new_count']} 条)\n\n"
             elif format_type == "feishu":
@@ -921,7 +921,7 @@ def split_content_into_batches(
         if format_type == "wework":
             failed_header = f"\n\n\n\n⚠️ **数据获取失败的平台：**\n\n"
         elif format_type == "telegram":
-            failed_header = f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n⚠️ <b>数据获取失败的平台</b>\n\n"
+            failed_header = f"\n\n━━━━━━━━━━━━━━━━━━━\n⚠️ <b>数据获取失败的平台</b>\n\n"
         elif format_type == "ntfy":
             failed_header = f"\n\n⚠️ **数据获取失败的平台：**\n\n"
         elif format_type == "feishu":
@@ -1025,7 +1025,7 @@ def _process_rss_stats_section(
         elif format_type in ("wework", "bark"):
             rss_header = f"\n\n\n\n📰 **RSS 订阅统计** (共 {total_items} 条)\n\n"
         elif format_type == "telegram":
-            rss_header = f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n📰 <b>RSS 订阅</b> <code>{total_items}</code> 条\n\n"
+            rss_header = f"\n\n━━━━━━━━━━━━━━━━━━━\n📰 <b>RSS 订阅</b> <code>{total_items}</code> 条\n\n"
         elif format_type == "slack":
             rss_header = f"\n\n📰 *RSS 订阅统计* (共 {total_items} 条)\n\n"
         else:
@@ -1037,7 +1037,7 @@ def _process_rss_stats_section(
         elif format_type == "dingtalk":
             rss_header = f"📰 **RSS 订阅统计** (共 {total_items} 条)\n\n"
         elif format_type == "telegram":
-            rss_header = f"━━━━━━━━━━━━━━━━━━━━━━━━\n📰 <b>RSS 订阅</b> <code>{total_items}</code> 条\n\n"
+            rss_header = f"━━━━━━━━━━━━━━━━━━━\n📰 <b>RSS 订阅</b> <code>{total_items}</code> 条\n\n"
         elif format_type == "slack":
             rss_header = f"📰 *RSS 订阅统计* (共 {total_items} 条)\n\n"
         else:
@@ -1263,7 +1263,7 @@ def _process_rss_new_titles_section(
         if format_type in ("wework", "bark"):
             new_header = f"\n\n\n\n🆕 **RSS 本次新增** (共 {total_items} 条)\n\n"
         elif format_type == "telegram":
-            new_header = f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n🆕 <b>RSS 新增</b> <code>{total_items}</code> 条\n\n"
+            new_header = f"\n\n━━━━━━━━━━━━━━━━━━━\n🆕 <b>RSS 新增</b> <code>{total_items}</code> 条\n\n"
         elif format_type == "ntfy":
             new_header = f"\n\n🆕 **RSS 本次新增** (共 {total_items} 条)\n\n"
         elif format_type == "feishu":
@@ -1277,7 +1277,7 @@ def _process_rss_new_titles_section(
         if format_type in ("wework", "bark"):
             new_header = f"🆕 **RSS 本次新增** (共 {total_items} 条)\n\n"
         elif format_type == "telegram":
-            new_header = f"━━━━━━━━━━━━━━━━━━━━━━━━\n🆕 <b>RSS 新增</b> <code>{total_items}</code> 条\n\n"
+            new_header = f"━━━━━━━━━━━━━━━━━━━\n🆕 <b>RSS 新增</b> <code>{total_items}</code> 条\n\n"
         elif format_type == "ntfy":
             new_header = f"🆕 **RSS 本次新增** (共 {total_items} 条)\n\n"
         elif format_type == "feishu":
@@ -1519,7 +1519,7 @@ def _process_standalone_section(
         elif format_type in ("wework", "bark"):
             section_header = f"\n\n\n\n📋 **独立展示区** (共 {total_items} 条)\n\n"
         elif format_type == "telegram":
-            section_header = f"\n\n━━━━━━━━━━━━━━━━━━━━━━━━\n📋 <b>独立展示区</b> <code>{total_items}</code> 条\n\n"
+            section_header = f"\n\n━━━━━━━━━━━━━━━━━━━\n📋 <b>独立展示区</b> <code>{total_items}</code> 条\n\n"
         elif format_type == "slack":
             section_header = f"\n\n📋 *独立展示区* (共 {total_items} 条)\n\n"
         else:
@@ -1531,7 +1531,7 @@ def _process_standalone_section(
         elif format_type == "dingtalk":
             section_header = f"📋 **独立展示区** (共 {total_items} 条)\n\n"
         elif format_type == "telegram":
-            section_header = f"━━━━━━━━━━━━━━━━━━━━━━━━\n📋 <b>独立展示区</b> <code>{total_items}</code> 条\n\n"
+            section_header = f"━━━━━━━━━━━━━━━━━━━\n📋 <b>独立展示区</b> <code>{total_items}</code> 条\n\n"
         elif format_type == "slack":
             section_header = f"📋 *独立展示区* (共 {total_items} 条)\n\n"
         else:

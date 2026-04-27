@@ -330,7 +330,7 @@ def render_ai_analysis_telegram(result: AIAnalysisResult) -> str:
             return f"ℹ️ {_escape_html(result.error)}"
         return f"⚠️ AI 分析失败: {_escape_html(result.error)}"
 
-    lines = ["━━━━━━━━━━━━━━━━━━━━━━━━", "✨ <b>AI 热点分析</b>", ""]
+    lines = ["━━━━━━━━━━━━━━━━━━━", "✨ <b>AI 热点分析</b>", ""]
 
     if result.core_trends:
         lines.extend([
