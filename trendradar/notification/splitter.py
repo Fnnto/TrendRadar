@@ -496,7 +496,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{first_title_data['title']}"
 
-                first_news_line = f"  1. {formatted_title}\n"
+                first_news_line = f"{formatted_title}\n"
                 if len(stat["titles"]) > 1:
                     first_news_line += "\n"
 
@@ -551,7 +551,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{title_data['title']}"
 
-                news_line = f"  {j + 1}. {formatted_title}\n"
+                news_line = f"{formatted_title}\n"
                 if j < len(stat["titles"]) - 1:
                     news_line += "\n"
 
@@ -696,7 +696,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{title_data_copy['title']}"
 
-                first_news_line = f"  1. {formatted_title}\n"
+                first_news_line = f"{formatted_title}\n"
 
             # 原子性检查：来源标题+第一条新闻
             source_with_first_news = source_header + first_news_line
@@ -748,7 +748,7 @@ def split_content_into_batches(
                 else:
                     formatted_title = f"{title_data_copy['title']}"
 
-                news_line = f"  {j + 1}. {formatted_title}\n"
+                news_line = f"{formatted_title}\n"
 
                 test_content = current_batch + news_line
                 if (
@@ -1126,7 +1126,7 @@ def _process_rss_stats_section(
             else:
                 formatted_title = f"{first_title_data['title']}"
 
-            first_news_line = f"  1. {formatted_title}\n"
+            first_news_line = f"{formatted_title}\n"
             if len(stat["titles"]) > 1:
                 first_news_line += "\n"
 
@@ -1166,7 +1166,7 @@ def _process_rss_stats_section(
             else:
                 formatted_title = f"{title_data['title']}"
 
-            news_line = f"  {j + 1}. {formatted_title}\n"
+            news_line = f"{formatted_title}\n"
             if j < len(stat["titles"]) - 1:
                 news_line += "\n"
 
@@ -1340,7 +1340,7 @@ def _process_rss_new_titles_section(
             else:
                 formatted_title = f"{first_title_data['title']}"
 
-            first_news_line = f"  1. {formatted_title}\n"
+            first_news_line = f"{formatted_title}\n"
 
         # 原子性检查：来源标题 + 第一条新闻必须一起处理
         source_with_first_news = source_header + first_news_line
@@ -1379,7 +1379,7 @@ def _process_rss_new_titles_section(
             else:
                 formatted_title = f"{title_data['title']}"
 
-            news_line = f"  {j + 1}. {formatted_title}\n"
+            news_line = f"{formatted_title}\n"
 
             test_content = current_batch + news_line
             if len(test_content.encode("utf-8")) + len(base_footer.encode("utf-8")) >= max_bytes:
