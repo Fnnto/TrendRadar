@@ -142,12 +142,9 @@ def format_title_for_platform(
         else:
             result = f"▸ {title_prefix}{formatted_title}"
 
-        if rank_display:
-            result += f" <code>{rank_display}</code>"
-        if title_data["time_display"]:
-            result += f" <code>- {title_data['time_display']}</code>"
-        if title_data["count"] > 1:
-            result += f" <code>({title_data['count']}次)</code>"
+        # Telegram 只显示上升趋势箭头，不显示排名数字和时间
+        if rank_display and "🔺" in rank_display:
+            result += " 🔺"
 
         return result
 
