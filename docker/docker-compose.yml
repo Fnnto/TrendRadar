@@ -1,6 +1,8 @@
 services:
   trendradar:
-    image: wantcat/trendradar:latest
+    build:
+      context: /home/ryze/.hermes/workspace/projects/TrendRadar
+      dockerfile: docker/Dockerfile
     container_name: trendradar
     restart: unless-stopped
 
