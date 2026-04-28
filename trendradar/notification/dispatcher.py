@@ -568,6 +568,7 @@ class NotificationDispatcher:
                     ai_analysis=ai_analysis,
                     display_regions=display_regions,
                     standalone_data=standalone_data,
+                    period_name=period_name,
                 )
                 results.append(result)
 

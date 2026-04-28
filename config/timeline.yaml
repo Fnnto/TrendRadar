@@ -106,7 +106,7 @@ presets:
       morning_briefing:
         ai_mode: current
         analyze: true
-        end: '09:30'
+        end: 09:30
         name: 早间速报
         push: true
         report_mode: current
