@@ -152,6 +152,7 @@ def split_content_into_batches(
     ai_stats: Optional[Dict] = None,
     report_type: str = "热点分析报告",
     show_new_section: bool = True,
+    period_name: Optional[str] = None,
 ) -> List[str]:
     """分批处理消息内容，确保词组标题+至少第一条新闻的完整性（支持热榜+RSS合并+AI分析+独立展示区）
 
@@ -257,7 +258,7 @@ def split_content_into_batches(
             "晚间全景": "🌙 <b>晚间全景</b>",
             "热点分析报告": "📊 <b>热点分析报告</b>",
         }
-        period_title = period_title_map.get(report_type, f"📊 <b>{report_type}</b>")
+        period_title = period_title_map.get(period_name or report_type, f"📊 <b>{report_type}</b>")
         base_header = f"{period_title}\n"
         base_header += f"<code>{total_titles}</code> 条"
         if ai_stats_line:

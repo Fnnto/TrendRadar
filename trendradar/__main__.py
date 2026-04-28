@@ -991,6 +991,7 @@ class NewsAnalyzer:
                 ai_analysis=ai_result,
                 standalone_data=standalone_data,
                 skip_translation=True,
+                period_name=schedule.period_name if schedule else None,
             )
 
             if not results:
