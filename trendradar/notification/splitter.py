@@ -813,15 +813,39 @@ def split_content_into_batches(
             current_batch = base_header
             current_batch_has_content = False
 
+            # HTML 标签追踪：防止跨批次时 blockquote/b/i 等标签断裂
+            import re as _re
+
+            def _get_open_tags(text: str) -> list:
+                """找出文本中未闭合的 HTML 标签"""
+                tags = _re.findall(r'<(/?)(\w+)', text)
+                stack = []
+                track_tags = {'b', 'i', 'u', 's', 'code', 'pre', 'blockquote', 'a'}
+                for closing, tag in tags:
+                    if tag not in track_tags:
+                        continue
+                    if closing:
+                        if stack and stack[-1] == tag:
+                            stack.pop()
+                    else:
+                        stack.append(tag)
+                return stack
+
+            open_tags = []
+
             for line in ai_lines:
                 test_line = line + "\n" if not line.endswith("\n") else line
                 test_content = current_batch + test_line
                 if len(test_content.encode("utf-8")) + footer_size >= max_bytes and current_batch_has_content:
+                    # 先闭合当前打开的标签，再结束批次
+                    current_batch += ''.join(f'</{t}>' for t in reversed(open_tags))
                     _safe_append_batch(batches, current_batch, base_footer, max_bytes, base_header)
-                    current_batch = base_header + test_line
+                    # 新批次重新打开标签
+                    current_batch = base_header + ''.join(f'<{t}>' for t in open_tags) + test_line
                 else:
                     current_batch = test_content
                 current_batch_has_content = True
+                open_tags = _get_open_tags(current_batch[len(base_header):])
 
         return current_batch, current_batch_has_content, batches
 

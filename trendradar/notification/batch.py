@@ -6,6 +6,7 @@
 """
 
 from typing import List
+import re
 
 
 def get_batch_header(format_type: str, batch_num: int, total_batches: int) -> str:
@@ -20,7 +21,7 @@ def get_batch_header(format_type: str, batch_num: int, total_batches: int) -> st
         格式化的批次头部字符串
     """
     if format_type == "telegram":
-        return f"<b>{batch_num}/{total_batches}</b>\n\n"
+        return ""  # 页数移到 footer 显示
     elif format_type == "slack":
         return f"*[第 {batch_num}/{total_batches} 批次]*\n\n"
     elif format_type in ("wework_text", "bark"):
@@ -213,8 +214,12 @@ def add_batch_headers(
         max_content_size = max_bytes - header_size
 
         if len(content.encode("utf-8")) > max_content_size:
-            # 仍超限（极端情况：单行过长），行边界截断
             content = truncate_preserving_footer(content, max_content_size)
+
+        # Telegram: 页数注入到 footer 的 Ryze 行里
+        if format_type == "telegram" and total > 1:
+            page_tag = f" · <b>{i}/{total}</b>"
+            content = re.sub(r'(🤖 Ryze · \d{2}:\d{2})', rf'\1{page_tag}', content)
 
         result.append(header + content)
 
