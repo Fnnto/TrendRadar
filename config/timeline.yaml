@@ -114,7 +114,7 @@ presets:
       noon_update:
         end: '14:00'
         name: 午间增量
-        analyze: true
+        analyze: false
         ai_mode: incremental
         push: true
         report_mode: incremental
