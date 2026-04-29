@@ -788,8 +788,10 @@ def split_content_into_batches(
                 ai_separator = "\n---\n\n"
             elif format_type in ("wework", "bark"):
                 ai_separator = "\n\n\n\n"
-            elif format_type in ("telegram", "ntfy", "slack"):
+            elif format_type in ("ntfy", "slack"):
                 ai_separator = "\n\n"
+            elif format_type == "telegram":
+                ai_separator = "\n"
         # 如果不需要分割线，ai_separator 保持为空字符串
 
         # 尝试将 AI 内容添加到当前批次
@@ -946,7 +948,7 @@ def split_content_into_batches(
         if format_type == "wework":
             failed_header = f"\n\n\n\n⚠️ **数据获取失败的平台：**\n\n"
         elif format_type == "telegram":
-            failed_header = f"\n\n━━━━━━━━━━━━━━━━━━━\n⚠️ <b>数据获取失败的平台</b>\n\n"
+            failed_header = f"\n━━━━━━━━━━━━━━━━━━━\n⚠️ <b>数据获取失败的平台</b>\n"
         elif format_type == "ntfy":
             failed_header = f"\n\n⚠️ **数据获取失败的平台：**\n\n"
         elif format_type == "feishu":

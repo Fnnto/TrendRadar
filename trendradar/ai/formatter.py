@@ -373,7 +373,7 @@ def render_ai_analysis_telegram(result: AIAnalysisResult) -> str:
             lines.extend([
                 "<blockquote><b>📌 独立源点速览</b>",
                 _escape_html(summaries_text),
-                "</blockquote>"
+                "</blockquote>", ""
             ])
 
     return "\n".join(lines)
