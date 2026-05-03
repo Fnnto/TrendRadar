@@ -35,6 +35,9 @@ def _split_content_by_lines(
     footer_size = len(footer.encode("utf-8"))
     result_batches = []
     lines = content.split("\n")
+    # 移除尾部空行，避免拆分后 footer 前多出空行
+    while lines and lines[-1] == "":
+        lines.pop()
 
     current = ""
     for line in lines:
@@ -812,6 +815,9 @@ def split_content_into_batches(
             available = max_bytes - footer_size - header_size
 
             ai_lines = ai_content.split("\n")
+            # 移除尾部空行，避免拆分后 footer 前多出空行
+            while ai_lines and ai_lines[-1] == "":
+                ai_lines.pop()
             current_batch = base_header
             current_batch_has_content = False
 
